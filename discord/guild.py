@@ -160,7 +160,7 @@ class SystemChannelFlags:
 
     @_flag_descriptor
     def premium_subscriptions(self):
-        """:class:`bool`: Returns True if the system channel is used for Nitro boosting notifications."""
+        """:class:`bool`: Returns True if the system channel is used for boosting notifications."""
         return 2
 
 
@@ -250,10 +250,15 @@ class Guild(Hashable):
     splash: Optional[:class:`str`]
         The guild's invite splash.
     premium_tier: :class:`int`
-        The premium tier for this guild. Corresponds to "Nitro Server" in the official UI.
+        The premium tier for this guild. Corresponds to "Boost Level" in the official UI.
         The number goes from 0 to 3 inclusive.
     premium_subscription_count: :class:`int`
-        How many users have currently "boosted" this guild.
+        How many "boosts" this guild has.
+        
+        .. note::
+
+            To get how many **people** boosted this guild, use ``len(guild.premium_subscribers)``
+            instead.
     preferred_locale: Optional[:class:`str`]
         The preferred locale for the guild. Used when filtering Server Discovery
         results to a specific language.
